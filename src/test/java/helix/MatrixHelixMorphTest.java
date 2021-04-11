@@ -1,7 +1,6 @@
 package helix;
 
 import org.junit.Test;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertTrue;
 
@@ -54,6 +53,62 @@ public class MatrixHelixMorphTest {
     public void test1x1() {
         int[][] inMatrix = {{1}};
         int[][] expOutput = {{1}};
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void test1x2() {
+        int[][] inMatrix = {{1, 2}};
+        int[][] expOutput = {{1, 2}};
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void test2x1() {
+        int[][] inMatrix = {{1}, {2}};
+        int[][] expOutput = {{1}, {2}};
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void test3x3() {
+        int[][] inMatrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int[][] expOutput = {{1, 2, 3}, {8, 9, 4}, {7, 6, 5}};
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void test4x5() {
+        int[][] inMatrix = {{7, 5, 1, 4, 6}, {3, 2, 9, 1, 8}, {8, 3, 2, 4, 1}, {10, 11, 15, 19, 14}};
+        int[][] expOutput = {{7, 5, 1, 4, 6}, {4, 1, 10, 11, 3}, {2, 14, 19, 15, 2}, {3, 8, 8, 1, 9}};
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void test0() {
+        int[][] inMatrix = {};
+        int[][] expOutput = {};
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void testNull() {
+        int[][] inMatrix = null;
+        int[][] expOutput = null;
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void testInvalidMatrix() {
+        int[][] inMatrix = {{1, 2}, {3, 4, 5}, {6, 7}};
+        int[][] expOutput = null;
+        assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
+    }
+
+    @Test
+    public void test5x3() {
+        int[][] inMatrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}, {13, 14, 15}};
+        int[][] expOutput = {{1, 2, 3}, {12, 13, 4}, {11, 14, 5}, {10, 15, 6}, {9, 8, 7}};
         assertTrue(testEqual(expOutput, MatrixHelixMorph.helix(inMatrix)));
     }
 }
